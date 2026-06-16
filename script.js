@@ -1,3 +1,41 @@
+function formatOwners(owner) {
+
+    if (!owner) return "Unknown";
+
+    if (!owner.includes("-")) return owner;
+
+    const parts = owner.split("-");
+
+    const low = Number(parts[0]);
+    const high = Number(parts[1]);
+
+    return (
+        low.toLocaleString() +
+        " - " +
+        high.toLocaleString()
+    );
+}
+
+function formatPlaytime(minutes) {
+
+    if (!minutes || minutes <= 0) {
+        return "No Data";
+    }
+
+    const hours = minutes / 60;
+
+    if (hours >= 1000) {
+        return hours.toLocaleString(
+            undefined,
+            {
+                maximumFractionDigits: 0
+            }
+        ) + " hrs";
+    }
+
+    return hours.toFixed(1) + " hrs";
+}
+
 let gamesData = [];
 
 async function loadData() {
@@ -56,7 +94,12 @@ async function searchGame() {
         return;
     }
 
-    const data = matches[0];
+    const data =
+    matches.sort(
+        (a, b) =>
+        a.name.length -
+        b.name.length
+    )[0];
 
     const hidden =
         data.hidden_gem === 1;
@@ -162,7 +205,7 @@ async function searchGame() {
         </div>
 
         <p style="text-align:center;margin-top:10px;">
-            Hidden Gem Potential ${confidence.toFixed(2)}%
+            Hidden Gem Score ${confidence.toFixed(2)}%
         </p>
 
         <div class="progress-container">
