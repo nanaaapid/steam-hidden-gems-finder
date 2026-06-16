@@ -140,14 +140,14 @@ async function searchGame() {
             <div class="metric">
                 <div class="metric-label">Owners</div>
                 <div class="metric-value">
-                    ${data.owners}
+                    ${formatOwners(data.owners)}
                 </div>
             </div>
 
             <div class="metric">
                 <div class="metric-label">Playtime</div>
                 <div class="metric-value">
-                    ${data.average_playtime}
+                    ${formatPlaytime(data.average_playtime)}
                 </div>
             </div>
 
@@ -162,7 +162,7 @@ async function searchGame() {
         </div>
 
         <p style="text-align:center;margin-top:10px;">
-            Confidence ${confidence.toFixed(2)}%
+            Hidden Gem Potential ${confidence.toFixed(2)}%
         </p>
 
         <div class="progress-container">
