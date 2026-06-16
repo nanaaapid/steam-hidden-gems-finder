@@ -53,10 +53,8 @@ A custom Hidden Gem Score was developed using:
 
 ```text
 Hidden Gem Score =
-(0.5 × Rating Ratio Scaled)
-+
-(0.3 × Playtime Scaled)
--
+(0.5 × Rating Ratio Scaled) +
+(0.3 × Playtime Scaled) -
 (0.4 × Owners Scaled)
 ```
 
